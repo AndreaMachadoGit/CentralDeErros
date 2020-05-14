@@ -2,8 +2,11 @@ package br.com.codenation.evento.model;
 
 //import br.com.codenation.categoria.model.Categoria;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Evento {
@@ -13,15 +16,24 @@ public class Evento {
     private Long id;
 
     @NotNull
-    @NotBlank(message = "A descrição do erro não pode ser vazia")
+    @NotBlank(message = "A descrição do evento não pode ser vazia")
     private String descricao;
 
     @Min(0)
-    @Max(10)
     @PositiveOrZero
     private Long quantidade;
 
     private ErrorLevel errorLevel;
+
+    @CreatedDate
+    private LocalDateTime data;
+
+    @NotNull
+    private String log;
+
+    @NotNull
+    private String origem;
+
 
 
     //@ManyToMany
