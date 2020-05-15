@@ -4,8 +4,7 @@ Em projetos modernos é cada vez mais comum o uso de arquiteturas baseadas em se
 
 Abaixo estão os requisitos desta API, o time terá total liberdade para tomar as decisões técnicas e de arquitetura da API, desde que atendam os requisitos abaixo.
 
-API
-
+API  
 Tecnologia
 
 Utilizar a tecnologia base da aceleração para o desenvolvimento (Exemplo: Java, Node.js)
