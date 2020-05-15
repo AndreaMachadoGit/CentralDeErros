@@ -5,11 +5,11 @@ Em projetos modernos é cada vez mais comum o uso de arquiteturas baseadas em se
 Abaixo estão os requisitos desta API, o time terá total liberdade para tomar as decisões técnicas e de arquitetura da API, desde que atendam os requisitos abaixo.
 
 API  
-Tecnologia
+Tecnologia : 
 
 Utilizar a tecnologia base da aceleração para o desenvolvimento (Exemplo: Java, Node.js)
 
-Premissas
+Premissas : 
 
 A API deve ser pensada para atender diretamente um front-end
 Deve ser capaz de gravar os logs de erro em um banco de dados relacional
