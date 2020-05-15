@@ -1,6 +1,7 @@
 package br.com.codenation.evento.controller;
 
 import br.com.codenation.controller.advice.ResourceNotFoundException;
+import br.com.codenation.evento.model.ErrorLevel;
 import br.com.codenation.evento.model.Evento;
 import br.com.codenation.evento.service.EventoService;
 import io.swagger.annotations.ApiOperation;
@@ -37,9 +38,9 @@ public class EventoController {
 
     @GetMapping
     @ApiOperation("Lista todos os eventos")
-    public Iterable<Evento> findAll(@PathParam("nome") String nome, Pageable pageable) {
-        if (nome != null) {
-            return this.eventoService.findByNome(nome.toString(), pageable);
+    public Iterable<Evento> findAll(@PathParam("descricao") String descricao, Pageable pageable) {
+        if (descricao != null) {
+            return this.eventoService.findByDescricao(descricao, pageable);
         }
         return this.eventoService.findAll(pageable);
     }
@@ -56,24 +57,9 @@ public class EventoController {
         this.eventoService.deleteById(id);
     }
 
-    //@GetMapping("/byLevel/{level}")
-    //public List<Evento> findByLevel(@PathVariable("level") Long level) {
-    //    return this.eventoService.findByLevel(level);
-    //}
-
-    @GetMapping("/byNomeCategoria/{nome}")
-    public List<Evento> findByNomeCategoria(@PathVariable("nome") String nomeCategoria) {
-        return this.eventoService.findByNomeCategoria(nomeCategoria);
-    }
-
-    @GetMapping("/comCategorias")
-    public List<Evento> findComCategoria() {
-        return this.eventoService.findComCategorias();
-    }
-
-    @GetMapping("/testException")
-    public void testException() {
-        Integer x = 2 / 0;
+    @GetMapping("/byErrorLevel/{level}")
+    public List<Evento> findByLevel(@PathVariable("level") ErrorLevel level, Pageable pageable) {
+        return this.eventoService.findByErrorLevel(level,pageable);
     }
 
 }

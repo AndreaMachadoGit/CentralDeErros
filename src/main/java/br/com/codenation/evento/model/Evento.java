@@ -31,16 +31,40 @@ public class Evento {
     @NotNull
     private String log;
 
+    public ErrorLevel getErrorLevel() {
+        return errorLevel;
+    }
+
+    public void setErrorLevel(ErrorLevel errorLevel) {
+        this.errorLevel = errorLevel;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public String getLog() {
+        return log;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
+
     @NotNull
     private String origem;
-
-
-
-    //@ManyToMany
-    //@JoinTable(name = "LIVRO_CATEGORIA",
-    //        joinColumns = @JoinColumn(name = "idLivro"),
-    //        inverseJoinColumns = @JoinColumn(name = "idCategoria"))
-    //private List<Categoria> categorias;
 
     public Evento(String titulo) {
         this.descricao = titulo;
@@ -66,15 +90,6 @@ public class Evento {
         this.descricao = descricao;
     }
 
-    //public List<Categoria> getCategorias() {
-    //    return categorias;
-    //}
-
-    //public void setCategorias(List<Categoria> categorias) {
-    //    this.categorias = categorias;
-    //}
-
-
     public Long getQuantidade() {
         return quantidade;
     }
@@ -82,10 +97,5 @@ public class Evento {
     public void setQuantidade(Long quantidade) {
         this.quantidade = quantidade;
     }
-
-    //public Integer getMediaAvaliacoes() {
-     //   return this.avaliacoes.stream()
-     //           .collect(Collectors.maxBy(Comparator.comparingInt(Avaliacao::getNota))).get().getNota();
-    //}
 
 }

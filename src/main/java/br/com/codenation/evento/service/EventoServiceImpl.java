@@ -1,8 +1,10 @@
 package br.com.codenation.evento.service;
 
+import br.com.codenation.evento.model.ErrorLevel;
 import br.com.codenation.evento.model.Evento;
 import br.com.codenation.evento.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -17,26 +19,14 @@ public class EventoServiceImpl implements EventoService {
     @Autowired
     private EventoRepository eventoRepository;
 
-    //@Autowired
-    //private CategoriaService categoriaService;
-
-    //@Autowired
-    //private AvaliacaoService avaliacaoService;
-
-    @Override
+     @Override
     public List<Evento> findAll(Pageable pageable) {
-        return this.eventoRepository.findAll(pageable).getContent();
+         return this.eventoRepository.findAll(pageable).getContent();
     }
-
-    //@Override
-   // public List<Evento> findByCategoria(Long idCategoria) {
-        //Categoria categoria = this.categoriaService.findById(idCategoria).get();
-        //return this.eventoRepository.findByCategorias(categoria);
-    //}
 
     @Override
     public Optional<Evento> findById(Long id) {
-        return eventoRepository.findById(id);
+         return eventoRepository.findById(id);
     }
 
     @Override
@@ -46,27 +36,22 @@ public class EventoServiceImpl implements EventoService {
 
     @Override
     public void deleteById(Long id) {
-        this.eventoRepository.deleteById(id);
+         this.eventoRepository.deleteById(id);
     }
 
     @Override
-    public List<Evento> findByNome(String nome, Pageable pageable) {
-        return this.eventoRepository.findByTituloContaining(nome, pageable).getContent();
+    public List<Evento> findByDescricao(String descricao, Pageable pageable) {
+        return this.eventoRepository.findByDescricao(descricao,pageable);
     }
 
     @Override
-    public List<Evento> findByNomeCategoria(String nomeCategoria) {
-        return this.eventoRepository.findByNomeCategoria(nomeCategoria);
+    public Page<Evento> findByDescricaoContaining(String descricao, Pageable pageable) {
+        return this.eventoRepository.findByDescricaoContaining(descricao,pageable);
     }
 
     @Override
-    public List<Evento> findComCategorias() {
-        return this.eventoRepository.findComCategoria();
+    public List<Evento> findByErrorLevel(ErrorLevel level,Pageable pageable) {
+        return this.eventoRepository.findByErrorLevel(level,pageable);
     }
 
-    @Override
-    public Evento findByMaiorMediaAvaliacao() {
-        return this.eventoRepository.findComAvaliacao().stream().
-                collect(Collectors.maxBy(Comparator.comparingInt(Evento::getMediaAvaliacoes))).get();
-    }
 }
