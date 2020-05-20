@@ -36,6 +36,7 @@ public class Evento {
 
     @NotNull
     private String origem;
+
     public Evento(String descricao) {
         this.descricao = descricao;
     }
@@ -44,61 +45,4 @@ public class Evento {
         super();
     }
 
-    /*
-    public ErrorLevel getErrorLevel() {
-        return errorLevel;
-    }
-
-    public void setErrorLevel(ErrorLevel errorLevel) {
-        this.errorLevel = errorLevel;
-    }
-
-    public LocalDateTime getData() {
-        return data;
-    }
-
-    public void setData(LocalDateTime data) {
-        this.data = data;
-    }
-
-    public String getLog() {
-        return log;
-    }
-
-    public void setLog(String log) {
-        this.log = log;
-    }
-
-    public String getOrigem() {
-        return origem;
-    }
-
-    public void setOrigem(String origem) {
-        this.origem = origem;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Long getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Long quantidade) {
-        this.quantidade = quantidade;
-    }
-    */
 }
