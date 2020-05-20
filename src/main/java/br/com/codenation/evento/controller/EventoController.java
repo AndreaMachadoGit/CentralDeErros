@@ -1,6 +1,8 @@
 package br.com.codenation.evento.controller;
 
 import br.com.codenation.controller.advice.ResourceNotFoundException;
+import br.com.codenation.evento.dto.EventoDTO;
+import br.com.codenation.evento.mapper.EventoMapper;
 import br.com.codenation.evento.model.ErrorLevel;
 import br.com.codenation.evento.model.Evento;
 import br.com.codenation.evento.service.EventoService;
@@ -25,6 +27,8 @@ public class EventoController {
     @Autowired
     private EventoService eventoService;
 
+    private EventoMapper mapper;
+
     @PostMapping
     @ApiOperation("Cria um novo evento de erro")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Evento criado com sucesso")})
@@ -40,11 +44,13 @@ public class EventoController {
 
     @GetMapping
     @ApiOperation("Lista todos os eventos de erros da APP")
-    public Iterable<Evento> findAll(@PathParam("descricao") String descricao, Pageable pageable) {
+    public Iterable<EventoDTO> findAll(@PathParam("descricao") String descricao, Pageable pageable) {
         if (descricao != null) {
-            return this.eventoService.findByDescricao(descricao, pageable);
+            //return this.eventoService.findByDescricao(descricao, pageable);
+            return mapper.map(eventoService.findByDescricao(descricao, pageable));
         }
-        return this.eventoService.findAll(pageable);
+        //return this.eventoService.findAll(pageable);
+        return mapper.map(eventoService.findAll(pageable));
     }
 
     @GetMapping("/{id}")

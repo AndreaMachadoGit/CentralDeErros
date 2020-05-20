@@ -1,6 +1,6 @@
 package br.com.codenation.evento.mapper;
 
-import br.com.codenation.evento.dto.eventoDTO;
+import br.com.codenation.evento.dto.EventoDTO;
 import br.com.codenation.evento.model.Evento;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface eventoMapper {
+public interface EventoMapper {
 
     @Mappings({
             @Mapping(source = "id", target = "id"),
@@ -19,9 +19,8 @@ public interface eventoMapper {
             @Mapping(source = "data", target = "data", dateFormat = "yyyy-MM-dd HH:mm"),
             @Mapping(source = "origem", target = "origem")
     })
+    EventoDTO map(Evento evento);
 
-    eventoDTO map(Evento evento);
-
-    List<eventoDTO> map(List<Evento> eventos);
+    List<EventoDTO> map(List<Evento> eventos);
 
 }

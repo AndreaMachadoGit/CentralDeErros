@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class eventoDTO {
+public class EventoDTO {
 
     private Long id;
     private String descricao;
