@@ -22,4 +22,12 @@ public interface EventoRepository extends CrudRepository<Evento, Long> {
 
     List<Evento> findByErrorLevel(ErrorLevel errorLevel, Pageable pageable);
 
+    @Query("FROM Evento e " +
+            "WHERE LOWER(e.descricao) like %:searchTerm% " +
+            "OR LOWER(e.origem) like %:searchTerm% " +
+            "OR LOWER(e.log) like %:searchTerm% ")
+    Page<Evento> search(
+            @Param("searchTerm") String searchTerm,
+            Pageable pageable);
+
 }

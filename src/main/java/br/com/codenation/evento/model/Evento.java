@@ -3,11 +3,14 @@ package br.com.codenation.evento.model;
 //import br.com.codenation.categoria.model.Categoria;
 
 import org.springframework.data.annotation.CreatedDate;
+import lombok.Data;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 public class Evento {
 
@@ -31,6 +34,17 @@ public class Evento {
     @NotNull
     private String log;
 
+    @NotNull
+    private String origem;
+    public Evento(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Evento() {
+        super();
+    }
+
+    /*
     public ErrorLevel getErrorLevel() {
         return errorLevel;
     }
@@ -63,17 +77,6 @@ public class Evento {
         this.origem = origem;
     }
 
-    @NotNull
-    private String origem;
-
-    public Evento(String titulo) {
-        this.descricao = titulo;
-    }
-
-    public Evento() {
-        super();
-    }
-
     public Long getId() {
         return id;
     }
@@ -97,5 +100,5 @@ public class Evento {
     public void setQuantidade(Long quantidade) {
         this.quantidade = quantidade;
     }
-
+    */
 }

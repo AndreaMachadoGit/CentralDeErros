@@ -5,7 +5,9 @@ import br.com.codenation.evento.model.Evento;
 import br.com.codenation.evento.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -22,6 +24,21 @@ public class EventoServiceImpl implements EventoService {
      @Override
     public List<Evento> findAll(Pageable pageable) {
          return this.eventoRepository.findAll(pageable).getContent();
+    }
+
+    public Page<Evento> search(
+            String searchTerm,
+            int page,
+            int size) {
+        PageRequest pageRequest = PageRequest.of(
+                page,
+                size,
+                Sort.Direction.ASC,
+                "name");
+
+        return eventoRepository.search(
+                searchTerm.toLowerCase(),
+                pageRequest);
     }
 
     @Override
