@@ -1,5 +1,5 @@
 # CentralDeErros
-Projeto final da aceleração Java da Codenation
+Projeto final da aceleração Java da Codenation - API Rest
 
 Objetivo
 
