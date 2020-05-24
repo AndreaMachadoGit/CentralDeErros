@@ -74,7 +74,7 @@ public class EventoController {
     }
 
     @GetMapping("/search")
-    @ApiOperation("Efetua a busca no banco de dados pelo conteúdo dos campos Descrição ou Log ou Origem")
+    @ApiOperation("Efetua a busca no banco de dados pelo conteúdo dos campos Descrição ou Origem")
     public Page<Evento> search(
             @RequestParam("searchTerm") String searchTerm,
             @RequestParam(
