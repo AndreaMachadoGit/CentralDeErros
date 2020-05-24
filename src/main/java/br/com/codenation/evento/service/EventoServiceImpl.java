@@ -10,10 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class EventoServiceImpl implements EventoService {
@@ -26,19 +24,9 @@ public class EventoServiceImpl implements EventoService {
          return this.eventoRepository.findAll(pageable).getContent();
     }
 
-    public Page<Evento> search(
-            String searchTerm,
-            int page,
-            int size) {
-        PageRequest pageRequest = PageRequest.of(
-                page,
-                size,
-                Sort.Direction.ASC,
-                "name");
-
-        return eventoRepository.search(
-                searchTerm.toLowerCase(),
-                pageRequest);
+    public List<Evento> search(String searchTerm, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page,size,Sort.Direction.ASC, "descricao");
+        return eventoRepository.search(searchTerm.toLowerCase(),pageRequest);
     }
 
     @Override

@@ -15,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.mappers.ModelMapper;
+import org.mapstruct.Mapper;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
@@ -26,8 +28,7 @@ public class EventoController {
 
     @Autowired
     private EventoService eventoService;
-
-    private EventoMapper mapper;
+    List<EventoDTO> eventoDTO;
 
     @PostMapping
     @ApiOperation("Cria um novo evento de erro")
@@ -44,13 +45,8 @@ public class EventoController {
 
     @GetMapping
     @ApiOperation("Lista todos os eventos de erros da APP")
-    public Iterable<EventoDTO> findAll(@PathParam("descricao") String descricao, Pageable pageable) {
-        if (descricao != null) {
-            //return this.eventoService.findByDescricao(descricao, pageable);
-            return mapper.map(eventoService.findByDescricao(descricao, pageable));
-        }
-        //return this.eventoService.findAll(pageable);
-        return mapper.map(eventoService.findAll(pageable));
+    public Iterable<EventoDTO> findAll(Pageable pageable) { //@PathParam("descricao") String descricao,
+         return eventoDTO = EventoMapper.INSTANCE.map(this.eventoService.findAll(pageable));
     }
 
     @GetMapping("/{id}")
@@ -73,22 +69,19 @@ public class EventoController {
         return this.eventoService.findByErrorLevel(level,pageable);
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search/{searchTerm}")
     @ApiOperation("Efetua a busca no banco de dados pelo conteúdo dos campos Descrição ou Origem")
-    public Page<Evento> search(
-            @RequestParam("searchTerm") String searchTerm,
-            @RequestParam(
-                    value = "page",
-                    required = false,
-                    defaultValue = "0") int page,
-            @RequestParam(
-                    value = "size",
-                    required = false,
-                    defaultValue = "10") int size) {
-        return eventoService.search(searchTerm, page, size);
+    public Iterable<EventoDTO> search(
+            @PathVariable("searchTerm") String searchTerm,
+            @RequestParam(value = "page",required = false,defaultValue = "0") int page,
+            @RequestParam(value = "size",required = false,defaultValue = "10") int size) {
+        //return eventoService.search(searchTerm, page, size);
 
+        return eventoDTO = EventoMapper.INSTANCE.map(eventoService.search(searchTerm, page, size));
+
+        //return eventoDTO = EventoMapper.INSTANCE.map(this.eventoService.findAll(pageable));
+
+        //return pgEventoDTO = EventoMapper.INSTANCE.map(eventoService.search(searchTerm, page, size));
     }
-
-
 
 }

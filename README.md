@@ -33,3 +33,6 @@ O acesso a ela deve ser permitido apenas por requisições que utilizem um token
 - ###### usuario = centralErros
 - ###### senha = erros123
 
+ [https://imgur.com/a/2iohvnv][https://imgur.com/a/2iohvnv]
+
+[https://imgur.com/a/2iohvnv]: https://imgur.com/a/2iohvnv

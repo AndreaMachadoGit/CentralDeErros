@@ -24,6 +24,6 @@ public interface EventoService {
 
     List<Evento> findByErrorLevel(ErrorLevel level, Pageable pageable);
 
-    Page<Evento> search(String searchTerm,int page,int size);
+    List<Evento> search(String searchTerm,int page, int size);
 
 }
