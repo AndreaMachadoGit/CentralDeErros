@@ -17,10 +17,6 @@ A API deve ser pensada para atender diretamente um front-end
 Deve ser capaz de gravar os logs de erro em um banco de dados relacional
 O acesso a ela deve ser permitido apenas por requisições que utilizem um token de acesso válido
 
-#### Informações para acessar o client :
-- ###### usuario = centralErros
-- ###### senha = erros123
-
 #### Funcionalidades :
 
 - Permite a autenticação do sistema que deseja utilizar a API gerando o Token de Acesso
@@ -32,5 +28,8 @@ O acesso a ela deve ser permitido apenas por requisições que utilizem um token
 - A consulta de listagem não retorna os LOGs dos Eventos
 - Permite a busca de um evento por um ID, dessa maneira exibindo o LOG desse evento em específico
 
-#### URI de acesso :
-https://central-de-erros-andrea.herokuapp.com/
+#### Informações para acessar o client :
+- #### URI de acesso : https://central-de-erros-andrea.herokuapp.com/
+- ###### usuario = centralErros
+- ###### senha = erros123
+
