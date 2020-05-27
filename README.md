@@ -28,11 +28,8 @@ O acesso a ela deve ser permitido apenas por requisições que utilizem um token
 - A consulta de listagem não retorna os LOGs dos Eventos
 - Permite a busca de um evento por um ID, dessa maneira exibindo o LOG desse evento em específico
 
-#### Informações para acessar o client :
+#### Informações para o client acessar a API :
 - #### URI de acesso : https://central-de-erros-andrea.herokuapp.com/
 - ###### usuario = centralErros
 - ###### senha = erros123
 
- [https://imgur.com/a/2iohvnv][https://imgur.com/a/2iohvnv]
-
-[https://imgur.com/a/2iohvnv]: https://imgur.com/a/2iohvnv
